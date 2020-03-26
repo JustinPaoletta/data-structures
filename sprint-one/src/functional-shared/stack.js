@@ -4,29 +4,37 @@ var Stack = function() {
 
   var storage = {};
 
-  stackMethods.push = function(value) {
-    var index = Object.keys(storage).length;
-    if (!storage[index]) {
-      storage[index] = value;
-    }
-  };
+  extend(storage, stackMethods);
 
-  stackMethods.pop = function() {
-    var index = Object.keys(storage).length - 1;
-    var last = storage[index];
-    delete storage[index];
-    return last;
-  };
-
-  stackMethods.size = function () {
-    var size = Object.keys(storage).length;
-    return size;
-  };
-
-  return stackMethods;
+  return storage;
 };
 
-var stackMethods = {};
+var extend = function(obj1, obj2) {
+  for (let key in obj2) {
+    obj1[key] = obj2[key];
+  }
+};
+
+var stackMethods = {
+  push: function(value) {
+    var index = Object.keys(this).length;
+    if (!this[index]) {
+      this[index] = value;
+    }
+  },
+
+  pop: function() {
+    var index = Object.keys(this).length - 1;
+    var last = this[index];
+    delete this[index];
+    return last;
+  },
+
+  size: function () {
+    var size = Object.keys(this).length;
+    return size - 3;
+  }
+};
 
 
 
