@@ -5,21 +5,21 @@ class Queue {
     Object.create(this);
   }
 
-  enqueue(value){
+  enqueue(value) {
     var index = Object.keys(this).length;
     if (!this[index]) {
       this[index] = value;
     }
   }
 
-  dequeue(){
+  dequeue() {
     var index = Object.keys(this);
     var firstProp = this[index[0]];
     delete this[index[0]];
     return firstProp;
   }
 
-  size(){
+  size() {
     var stackSize = Object.values(this).length;
     return stackSize;
   }

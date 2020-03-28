@@ -17,7 +17,7 @@ var Tree = function(value) {
   newTree.value = value;
 
   // your code here
-  newTree.children = []; // fix me
+  newTree.children = [];
 
 
   // extends newTree with treeMethods
@@ -38,9 +38,8 @@ var treeMethods = {};
 //adds child to tree
 treeMethods.addChild = function(value) {
 //add the template of new tree into the children array of newTree;
-  this.value = value;
-  this.children.push(this);
-  console.log(this);
+  let child = new Tree(value);
+  this.children.push(child);
 };
 
 //checks to see if it exists on the tree
@@ -51,24 +50,18 @@ treeMethods.contains = function(target) {
   }
 
   if (this.children.length > 0) {
+
     for (let i = 0; i < this.children.length; i++) {
-      if (this.children[i].value === target) {
+      if (this.children[i].contains(target)) {
         return true;
       }
-      if (this.children[i].length > 0) {
-        contains(this.children[i]);
-      }
     }
+
   }
 
 
   return false;
-
 };
-
-
-
-
 
 
 /*
