@@ -45,6 +45,7 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Time Complexity = O(n2)
  */
 
 

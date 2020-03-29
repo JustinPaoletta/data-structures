@@ -57,4 +57,5 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Time Complexity = addToTail && removeHead  === O(1) and contains === O(n)
  */

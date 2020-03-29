@@ -49,4 +49,5 @@ binaryMethods.depthFirstLog = function(func) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Time Complexity = O(log n)
  */

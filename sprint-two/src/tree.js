@@ -66,37 +66,5 @@ treeMethods.contains = function(target) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * Time Complexity = addChild = O(1) contains = O(n)
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var helperFunc = function (tree) {
-
-//   //checks to see if there is something in children array
-//   if (tree.children.length > 0) {
-//   //loops through children array
-//     for (var i = 0; i < tree.children.length - 1; i++) {
-//     // checks each childs value and compares it to the target
-//       if (tree.children[i].value === target) {
-//         return true;
-//       }
-//       helperFunc(tree.children[i]);
-//     }
-//   }
-// };
-
-// helperFunc(this);

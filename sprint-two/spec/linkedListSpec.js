@@ -52,4 +52,9 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should have values that are numbers', function() {
+    linkedList.addToTail(4);
+    expect(typeof linkedList.tail.value).to.equal('number');
+  });
 });
