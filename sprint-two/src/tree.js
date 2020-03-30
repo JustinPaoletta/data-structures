@@ -16,17 +16,15 @@ var Tree = function(value) {
 
   newTree.value = value;
 
-  // your code here
   newTree.children = [];
 
-
-  // extends newTree with treeMethods
   var extend = function(obj1, obj2) {
     for (let key in obj2) {
       obj1[key] = obj2[key];
     }
   };
 
+  // extends newTree with treeMethods
   extend(newTree, treeMethods);
 
   return newTree;
@@ -35,23 +33,22 @@ var Tree = function(value) {
 //object with methods
 var treeMethods = {};
 
-//adds child to tree
+
 treeMethods.addChild = function(value) {
-//add the template of new tree into the children array of newTree;
-  let child = new Tree(value);
-  this.children.push(child);
+  //add a new tree into the children array of current tree;
+  this.children.push(new Tree(value));
 };
 
-//checks to see if it exists on the tree
 treeMethods.contains = function(target) {
-
+  // if the current value is the same as the target return true
   if (this.value === target) {
     return true;
   }
-
+  //if there is anything in the children array
   if (this.children.length > 0) {
-
+    //loop through each child
     for (let i = 0; i < this.children.length; i++) {
+      // run contains on each child and return true if any child contains the target
       if (this.children[i].contains(target)) {
         return true;
       }
@@ -59,7 +56,7 @@ treeMethods.contains = function(target) {
 
   }
 
-
+  // if not in any child return false
   return false;
 };
 

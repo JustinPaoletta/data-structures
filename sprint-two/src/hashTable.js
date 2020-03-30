@@ -4,71 +4,66 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
-
+  // returns a number from hashing function
   var index = getIndexBelowMaxForKey(k, this._limit);
-
+  // looks up whats at the index of the storage array
   let bucket = this._storage.get(index);
-
+  // if there is no bucket create one
   if (!bucket) {
     bucket = [];
+    // push the bucket to the storage array
     this._storage.set(index, bucket);
   }
-
-  let keyExists = false;
-
+  // var tracks if the key already exists in the storage array
+  let keyAlreadyExists = false;
+  // loop through each pair in the bucket
   bucket.forEach((pair) => {
-    if (bucket[pair[0]] === k) {
-      bucket[pair[1]] === v;
-      keyExists = true;
+    // if it finds the key update the 'keys' value
+    if (pair[0] === k) {
+      pair.splice(1, 1, v);
+      // if the key is found update the variable to found
+      keyAlreadyExists = true;
     }
   });
-
-  if (!keyExists) {
+  // if it doesnt find the key push the new pair to the bucket
+  if (keyAlreadyExists === false) {
     bucket.push([k, v]);
   }
-
 };
 
 HashTable.prototype.retrieve = function(k) {
+  // returns a number from the hashing function
   var index = getIndexBelowMaxForKey(k, this._limit);
-
+  // looks up whats at the index of the storage array
   let bucket = this._storage.get(index);
-
+  // set var for what im retrieving
   let retriever;
-
+  // loop through each pair in the bucket
   bucket.forEach((pair) => {
+    // if the key is found update the variable the keys value
     if (pair[0] === k) {
       retriever = pair[1];
     }
   });
-
+  // return the value of the key
   return retriever;
-
-  // return undefined;
 };
 
 HashTable.prototype.remove = function(k) {
+  // returns a number from the hashing function
   var index = getIndexBelowMaxForKey(k, this._limit);
-  //retrieve bucket
-
+  // looks up whats at the index of the storage array
   let bucket = this._storage.get(index);
 
-  //iterate over bucket
-
-  let remover;
-
+  // loop through each pair in the bucket
   bucket.forEach((pair) => {
+    // if it finds the key delete the 'keys' value
     if (pair[0] === k) {
-      remover = pair[1];
-      pair.splice(1);
+      delete pair[1];
     }
   });
 
-  return remover;
-
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
